@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const ListingSchema = new Schema({
+const listingSchema = new Schema({
   title: {
     type: String,
     required: true,
@@ -9,6 +9,8 @@ const ListingSchema = new Schema({
   description: String,
   image: {
     type: String,
+    default:
+      "https://www.pexels.com/photo/charming-outdoor-cafe-in-sunny-lagos-spain-33797226/",
     set: (v) =>
       v ===
       "https://www.pexels.com/photo/charming-outdoor-cafe-in-sunny-lagos-spain-33797226/"
@@ -21,4 +23,4 @@ const ListingSchema = new Schema({
 });
 
 const Listing = mongoose.model("Listing", listingSchema);
-modules.export = Listing;
+module.exports = Listing;
