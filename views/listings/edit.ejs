@@ -2,20 +2,20 @@
   <body>
     <h2>Edit Listing</h2>
     <form action="/listings/<%= listing._id %>?_method=put" method="post">
-      <input type="text" name="listing[title]" value="<%= listing.title %>" />
+      <input type="text" name="listing[title]" value="<%= listing.title %>" placeholder="title"/>
       <br /><br />
       <textarea
         name="listing[description]"
-        value="<%= listing.description %>"
+        value="<%= listing.description %>" placeholder="description"
       ></textarea>
       <br /><br />
-      <textarea name="listing[image]" value="<%= listing.image %>"></textarea>
+      <textarea name="listing[image]" value="<%= listing.image %>" placeholder="image url"></textarea>
       <br /><br />
-      <input type="number" name="listing[price]" value="<%= listing.price.toLocaleString("en-IN") %>" />
+      <input type="number" name="listing[price]" value="<%= listing.price.toLocaleString("en-IN") %>" placeholder="Price" />
       <br /><br />
-      <input type="text" name="listing[location]" value="<%= listing.location %>" />
+      <input type="text" name="listing[location]" value="<%= listing.location %>" placeholder="location" />
       <br /><br />
-      <input type="text" name="listing[country]" value="<%= listing.country %>" />
+      <input type="text" name="listing[country]" value="<%= listing.country %>"  placeholder="country"/>
       <br /><br />
       <button>UPDATE</button>
     </form>
