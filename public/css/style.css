@@ -1,7 +1,24 @@
+/* BOILERPLATE */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+  padding: 2rem;
+}
+
+a {
+  text-decoration: none !important;
+}
+
 /* NAVBAR */
+
 .navbar {
   height: 5rem;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
 }
 
 .fa-airbnb {
@@ -12,6 +29,8 @@
 .nav-link {
   color: #222222 !important;
 }
+
+/* FOOTER */
 
 .f-info-links a {
   text-decoration: none;
@@ -46,8 +65,10 @@
   align-items: space-evenly;
 }
 
+/* INDEX LISTINGS */
+
 .card {
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   border: none !important;
 }
 
@@ -61,17 +82,30 @@
 .card-body {
   padding: 0 !important;
   margin: 0 !important;
-}
-
-.card-title {
   font-size: 1rem;
-}
-
-.card-text {
-  font-size: 0.9rem;
-  color: #615d5d;
+  text-align: justify;
 }
 
 .listing-link {
   text-decoration: none;
+}
+
+/* NEW LISTING */
+
+.btn-custom {
+  background-color: rgb(190, 30, 30) !important;
+  border: none !important;
+}
+
+/* Show listing */
+
+.show-img {
+  height: 20rem !important;
+  margin: 1rem 0 !important;
+}
+
+.show-body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }

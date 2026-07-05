@@ -1,22 +1,36 @@
 <% layout("/layouts/boilerplate") -%>
 <body>
-  <h2>Create New Listing</h2>
   <form action="/listings" method="post">
-    <input type="text" name="listing[title]" placeholder="Enter title" />
-    <br /><br />
-    <textarea
-      name="listing[description]"
-      placeholder="Enter description"
-    ></textarea>
-    <br /><br />
-    <textarea name="listing[image]" placeholder="Enter image url"></textarea>
-    <br /><br />
-    <input type="number" name="listing[price]" placeholder="Enter price" />
-    <br /><br />
-    <input type="text" name="listing[location]" placeholder="Enter location" />
-    <br /><br />
-    <input type="text" name="listing[country]" placeholder="Enter country" />
-    <br /><br />
-    <button>ADD</button>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <h2 class="mb-3">Create New Listing</h2>
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" name="listing[title]" />
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="listing[description]" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="image " class="form-label">Image URL</label>
+          <textarea name="listing[image]" class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Price</label>
+          <input type="number" name="listing[price]" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="location" class="form-label">Location</label>
+          <input type="text" name="listing[location]" class="form-control" />
+        </div>
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" name="listing[country]" class="form-control" />
+        </div>
+
+        <button class="btn btn-custom btn-dark offset-5">ADD</button>
+      </div>
+    </div>
   </form>
 </body>
