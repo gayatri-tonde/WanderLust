@@ -17,7 +17,7 @@ a {
 /* NAVBAR */
 
 .navbar {
-  height: 5rem;
+  min-height: 5rem;
   background-color: rgb(255, 255, 255);
 }
 
