@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const port = 8080;
-const Listing = require("./models/listing");
+const Listing = require("./models/listing.js");
 const path = require("path");
 const method_override = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/expressError.js");
 const { listingSchema } = require("./schema.js");
+const Reviews = require("./models/reviews.js");
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -80,10 +81,23 @@ app.get(
 //SHOW ROUTE
 app.get(
   "/listings/:id",
-  validateListing,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findById(id);
+    res.render("listings/show.ejs", { listing });
+  }),
+);
+
+//REVIEWS ROUTE
+app.post(
+  "/listings/:id/reviews",
+  wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    const listing = await Listing.findById(id);
+    let newReview = new Reviews(req.body.review);
+    listing.reviews.push(newReview);
+    await newReview.save();
+    await listing.save();
     res.render("listings/show.ejs", { listing });
   }),
 );
@@ -104,7 +118,6 @@ app.put(
 // DELETE ROUTE
 app.delete(
   "/listings/:id",
-  validateListing,
   wrapAsync(async (req, res) => {
     let { id } = req.params;
     const listing = await Listing.findByIdAndDelete(id);

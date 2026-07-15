@@ -18,8 +18,36 @@
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark"
           >Edit</a
         >
-
         <button class="btn btn-danger">Delete</button>
+      </form>
+      <hr />
+      <form
+        action="/listings/<%= listing._id %>/reviews"
+        method="post"
+        class="mt-3"
+      >
+        <h3>Leave a Review</h3>
+        <div class="mb-3">
+          <label for="comment" class="form-label">Comment</label>
+          <textarea
+            name="review[comment]"
+            class="form-control"
+            id="comment"
+            rows="3"
+          ></textarea>
+        </div>
+        <div class="rating mt-3">
+          <label for="rating" class="form-label">Rating</label>
+          <input
+            type="range"
+            class="form-range"
+            name="review[rating]"
+            min="0"
+            max="5"
+            id="rating"
+          />
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
       </form>
     </div>
   </div>
