@@ -21,9 +21,8 @@ a {
   background-color: rgb(255, 255, 255);
 }
 
-.fa-airbnb {
-  color: rgb(190, 30, 30);
-  font-size: 2rem;
+.navbar-brand {
+  color: rgb(215, 34, 34) !important;
 }
 
 .nav-link {
