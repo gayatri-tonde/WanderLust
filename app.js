@@ -10,11 +10,11 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const user = require("./models/user.js");
+const user = require("./models/userModel.js");
 
-const listingRouter = require("./routes/listing.js");
-const reviewRouter = require("./routes/review.js");
-const userRouter = require("./routes/user.js");
+const listingRouter = require("./routes/listingRoute.js");
+const reviewRouter = require("./routes/reviewRoute.js");
+const userRouter = require("./routes/userRoute.js");
 
 app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const initData = require("./data.js");
-const Listing = require("../models/listing");
+const Listing = require("../models/listingModel");
 
 main()
   .then((res) => {
