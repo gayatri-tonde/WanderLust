@@ -16,7 +16,6 @@ router.post(
       let { username, email, password } = req.body;
       const newuser = new User({ username, email });
       const registeredUser = await User.register(newuser, password);
-      console.log(newuser);
       req.login(registeredUser, (err) => {
         if (err) {
           return next(err);
@@ -26,7 +25,6 @@ router.post(
       });
     } catch (e) {
       req.flash("error", e.message);
-      console.log(req.body);
       console.log(e);
       res.redirect("/signup");
     }

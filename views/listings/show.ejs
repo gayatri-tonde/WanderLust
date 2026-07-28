@@ -9,26 +9,40 @@
     <div class="card-body">
 
       <!-- LISTING DETAILS -->
-      <div>
-        <p class="card-text mb-3">
-          <%= listing.description %> <br />
-          <b>₹<%= listing.price.toLocaleString("en-IN") %> / night </b> <br />
-          <i class="fa-solid fa-location-dot"></i><%= listing.location %> <br />
+      <div class="card-text mb-3">
+        <p>
+          <i>Owned by <%= listing.owner.username %> </i>
+        </p>
+        <p>
+          <%= listing.description %>
+        </p>
+        <p>
+          <b>₹<%= listing.price.toLocaleString("en-IN") %> / night </b>
+        </p>
+        <p>
+          <i class="fa-solid fa-location-dot"></i><%= listing.location %>
+        </p>
+        <p>
           <i class="fa-regular fa-map"></i><%= listing.country %>
         </p>
       </div>
 
       <!-- BUTTONS -->
-      <div>
+       <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+        <div>
         <form action="/listings/<%= listing._id %>?_method=delete" method="post">
           <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark">Edit</a>
           <button class="btn btn-danger">Delete</button>
         </form>
       </div>
+       <% } %>
+      
 
 
 
       <!-- create review -->
+       <%  if (currUser) { %>
+        
       <hr class="mt-3 mb-3">
       <div>
         <form action="/listings/<%= listing._id %>/reviews" method="post" class="mt-3 needs-validation" novalidate>
@@ -48,6 +62,7 @@
 
         </form>
       </div>
+      <% } %>
 
       <!-- ALL REVIEWS -->
       <hr class="mt-3 mb-3">
@@ -57,12 +72,15 @@
         <div class="col">
           <div class="card review-card ">
             <div class="card-body">
-              <p class="card-title fw-light">Username</p>
+              <p class="card-title fw-bold"><i class="fa-solid fa-user"></i><%= review.author.username %></p>
               <p class="card-text fw-medium"><%= review.comment %></p>
               <p class="card-text fw-light"><%= review.rating %> stars</p>
+
+              <% if (currUser && currUser._id.equals(review.author._id)) { %>              
               <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
                 <button class="btn btn-sm btn-dark">Delete</button>
               </form>
+              <% } %>
             </div>
           </div>
         </div>
