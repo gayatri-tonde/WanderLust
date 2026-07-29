@@ -28,34 +28,48 @@
       </div>
 
       <!-- BUTTONS -->
-       <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
-        <div>
+      <% if (currUser && currUser._id.equals(listing.owner._id)) { %>
+      <div>
         <form action="/listings/<%= listing._id %>?_method=delete" method="post">
           <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark">Edit</a>
           <button class="btn btn-danger">Delete</button>
         </form>
       </div>
-       <% } %>
-      
+      <% } %>
+
 
 
 
       <!-- create review -->
-       <%  if (currUser) { %>
-        
+      <%  if (currUser) { %>
+
       <hr class="mt-3 mb-3">
       <div>
         <form action="/listings/<%= listing._id %>/reviews" method="post" class="mt-3 needs-validation" novalidate>
           <h3>Leave a Review</h3>
+          <div class="rating mt-3">
+            <label for="rating" class="form-label">Rating</label>
+            <fieldset class="starability-basic">
+              <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked aria-label="No rating." />
+              <input type="radio" id="first-rate1" name="review[rating]" value="1" />
+              <label for="first-rate1" title="Terrible">1 star</label>
+              <input type="radio" id="first-rate2" name="review[rating]" value="2" />
+              <label for="first-rate2" title="Not good">2 stars</label>
+              <input type="radio" id="first-rate3" name="review[rating]" value="3" />
+              <label for="first-rate3" title="Average">3 stars</label>
+              <input type="radio" id="first-rate4" name="review[rating]" value="4" />
+              <label for="first-rate4" title="Very good">4 stars</label>
+              <input type="radio" id="first-rate5" name="review[rating]" value="5" />
+              <label for="first-rate5" title="Amazing">5 stars</label>
+            </fieldset>
+          </div>
+
           <div class="mb-3">
             <label for="comment" class="form-label">Comment</label>
             <textarea name="review[comment]" class="form-control" id="comment" rows="3" required></textarea>
             <div class="invalid-feedback">Provide a comment.</div>
           </div>
-          <div class="rating mt-3">
-            <label for="rating" class="form-label">Rating</label>
-            <input type="range" class="form-range" name="review[rating]" min="0" max="5" id="rating" />
-          </div>
+
           <div>
             <button type="submit" class="btn offset-3 btn-outline-dark">Submit</button>
           </div>
@@ -74,9 +88,9 @@
             <div class="card-body">
               <p class="card-title fw-bold"><i class="fa-solid fa-user"></i><%= review.author.username %></p>
               <p class="card-text fw-medium"><%= review.comment %></p>
-              <p class="card-text fw-light"><%= review.rating %> stars</p>
+              <p class="starability-result" data-rating="<%= review.rating %>"></p>
 
-              <% if (currUser && currUser._id.equals(review.author._id)) { %>              
+              <% if (currUser && currUser._id.equals(review.author._id)) { %>
               <form method="post" action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE">
                 <button class="btn btn-sm btn-dark">Delete</button>
               </form>
